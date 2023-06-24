@@ -6,17 +6,20 @@ function Homepage(){
 
     const [allPlanets, setAllPlanets] = useState([])
     const [page, setPage] = useState(1)
+    const [PageLoading, setPageLoading] = useState(false)
 
 
     useEffect(() => {
 
         async function getPlanets(){
+            setPageLoading(true)
 
             // fetch page worth of planets
             const fetchPlanets = await fetch(`https://swapi.dev/api/planets/?page=${page}`)
             const planetData = await fetchPlanets.json()
 
             setAllPlanets(planetData.results)
+            setPageLoading(false)
             return
 
 
@@ -43,6 +46,7 @@ function Homepage(){
                 <button
                 className='navigation-buttons'
                 onClick={() => setPage(page - 1)}
+                disabled={PageLoading}
                 >
                     Previous
                 </button>
@@ -52,12 +56,15 @@ function Homepage(){
                 <button
                 className='navigation-buttons'
                 onClick={() => setPage(page + 1)}
+                disabled={PageLoading}
                 >
                     Next
                 </button>
                 }
 
             </div>
+
+            {PageLoading && <div className='loading-notif'> Loading...</div>}
 
 
 
