@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import './residents.css'
 
 function GetResidents({residents}){
     const residentUrls = residents.residents
@@ -9,7 +9,7 @@ function GetResidents({residents}){
 
     useEffect(() => {
 
-        // fetching resident data to poluate with names
+        // fetching resident data to poluate site with names
         async function getResidentsNames(residentUrls){
 
             let allResidentNames = []
