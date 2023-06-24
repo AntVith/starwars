@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink} from 'react-router-dom';
+import './homepage.css'
 
 
 function Homepage(){
@@ -23,9 +24,8 @@ function Homepage(){
             setLastPage(getTotalPages(planetData.count))
             setPageLoading(false)
             return
-
-
         }
+
         getPlanets()
     }, [page])
 
@@ -55,6 +55,7 @@ function Homepage(){
             <h1 className='page-title'>Star Wars Planets</h1>
 
             <div className='navigation'>
+
                 {page > 1 &&
                 <button
                 className='navigation-buttons'
@@ -94,7 +95,12 @@ function Homepage(){
                         key={planet.name}
                         className='indiv-planet'
                         >
-                            {planet.name}
+                            <div className='homepage-planet-name-container'>
+                                <div className='homepage-planet-name'>
+                                    {planet.name}
+                                </div>
+                            </div>
+
                         </NavLink>
                     )
                 })}
