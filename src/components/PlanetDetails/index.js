@@ -30,7 +30,7 @@ function PlanetDetails(){
         }
         getPlanetDetails(planetId)
 
-    })
+    }, [])
 
 
     function backToHomePage(){
