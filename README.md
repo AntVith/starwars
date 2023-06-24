@@ -1,11 +1,11 @@
-#Star Wars
+# Star Wars
 
 This application shows planets from Star Wars.
 Once the user clicks a specific planet they can view the planet info and residents that live there.
 
 ## To view this application use this link:   https://starwars-ivory.vercel.app/
 
-For this project I utilized React for the frontend.
+For this project I utilized React for the frontend and styled with CSS.
 
 ## If you were to run the project locally:
 
