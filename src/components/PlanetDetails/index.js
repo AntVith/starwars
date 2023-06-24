@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import GetResidents from '../GetResidents';
 
 function PlanetDetails(){
 
@@ -8,6 +9,8 @@ function PlanetDetails(){
 
     const [planetData, setPlanetData] = useState({})
     const [PageLoading, setPageLoading] = useState(false)
+    const [residents, setResidents] = useState([])
+    const [receivedApiPlanetData, setReceivedApiPlanetData] = useState(false)
 
 
 
@@ -24,6 +27,8 @@ function PlanetDetails(){
             const planetInfo = await planetDetailsFetch.json()
 
             setPlanetData(planetInfo)
+            setResidents(planetInfo.residents)
+            setReceivedApiPlanetData(true)
             setPageLoading(false)
 
             return
@@ -92,6 +97,18 @@ function PlanetDetails(){
                     <text className='planet-detail-category-label'>Population</text>
                     <div className='planet-detail-category-data'>{planetData.population}  </div>
                 </div>
+
+                <div className='planet-detail-category'>
+                    <text className='planet-detail-category-label'>Residents</text>
+
+                    <div>
+                        {(receivedApiPlanetData && residents.length === 0) && <div className='planet-detail-category-data'>None </div>}
+
+                        {(receivedApiPlanetData && residents.length > 0) && <GetResidents residents = {{residents}}/>}
+                    </div>
+
+                </div>
+
             </div>
         )
 
